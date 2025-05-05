@@ -1,0 +1,118 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <h2 class="mb-4">Security Events List</h2>
+    <form method="GET" action="{% url 'event_list' %}" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <input type="text" name="q" class="form-control" placeholder="Search by keyword..." value="{{ query|default:'' }}">
+        </div>
+        <div class="col-md-3">
+            <select name="event_type" class="form-select">
+                <option value="">All Event Types</option>
+                {% for type in event_types %}
+                    <option value="{{ type }}" {% if type == selected_type %}selected{% endif %}>{{ type }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="date" name="start_date" class="form-control" value="{{ start_date|default:'' }}">
+        </div>
+        <div class="col-md-2">
+            <input type="date" name="end_date" class="form-control" value="{{ end_date|default:'' }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 style="color: #1c4475;">Event Log</h4>
+        <a href="{% url 'create_event' %}" class="btn text-white" style="background-color: #1c4475;">
+            + New Event
+        </a>
+    </div>
+    
+    <a href="{% url 'export_events_csv' %}?q={{ query }}&event_type={{ selected_type }}&start_date={{ start_date }}&end_date={{ end_date }}" 
+    class="btn btn-outline-primary mb-3">
+    Export to CSV
+    </a>
+
+    {% if page_obj %}
+
+    <!-- Table -->
+    <div class="table-responsive d-none d-md-block">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    {% if user.is_superuser %}
+                        <th>User</th>
+                    {% endif %}
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in page_obj %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    {% if user.is_superuser %}
+                        <td>{{ event.user.username }}</td>
+                    {% endif %}
+                    <td>{{ event.event_type }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Cards -->
+    <div class="d-block d-md-none">
+        {% for event in page_obj %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title mb-1"><strong>Type:</strong> {{ event.event_type }}</h6>
+                <p class="card-text mb-1"><strong>Description:</strong> {{ event.description }}</p>
+                {% if user.is_superuser %}
+                    <p class="card-text mb-1"><strong>User:</strong> {{ event.user.username }}</p>
+                {% endif %}
+                <p class="card-text text-muted"><small>{{ event.timestamp|date:"M d, Y H:i" }}</small></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}&event_type={{ selected_type }}&start_date={{ start_date }}&end_date={{ end_date }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <span class="page-link">{{ page_obj.number }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ query }}&event_type={{ selected_type }}&start_date={{ start_date }}&end_date={{ end_date }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    {% else %}
+        <p class="text-muted">No events found.</p>
+    {% endif %}
+</div>
+{% endblock %}
+

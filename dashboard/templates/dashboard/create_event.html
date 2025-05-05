@@ -1,0 +1,46 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg p-4 border-0 rounded-4">
+                <h3 class="mb-4 text-center fw-bold" style="color: #1c4475;">
+                    Create a New Security Event
+                </h3>
+
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        <label for="id_event_type" class="form-label fw-semibold">
+                            Event Type
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-shield-lock"></i>
+                            </span>
+                            {{ form.event_type|add_class:"form-control rounded-end" }}
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="id_description" class="form-label fw-semibold">
+                            Description
+                        </label>
+                        {{ form.description|add_class:"form-control" }}
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn text-white fw-semibold" style="background-color: #1c4475;">
+                            Submit Event
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
