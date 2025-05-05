@@ -1,24 +1,105 @@
 # Entorno virtual
 env/
+.venv/
+ENV/
+env.bak/
+venv/
+venv.bak/
 
-# Archivos compilados de Python
+# Compilados de Python
 __pycache__/
-*.pyc
-
-# Base de datos local
-db.sqlite3
-
-# Archivos temporales del sistema
-*.log
-*.pot
 *.py[cod]
-*.swp
+*.pyc
+*$py.class
 
-# Archivos de caché de VSCode o PyCharm
-.vscode/
-.idea/
-
-# Archivos de sistema
+# Archivos de sistema y logs
 .DS_Store
 Thumbs.db
+*.log
+*.pot
+*.swp
+
+# Configuración de IDEs
+.vscode/
+.idea/
+.ropeproject/
+.spyderproject
+.spyproject
+
+# Configs de dependencias y herramientas
+.Python
+*.egg-info/
+.eggs/
+*.egg
+*.manifest
+*.spec
+.pdm.toml
+.pdm-python
+.pdm-build/
+.pypirc
+.pyre/
+.pytype/
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pybuilder/
+target/
+.tox/
+.nox/
+
+# Base de datos
+db.sqlite3
+db.sqlite3-journal
+
+# Documentación
+docs/_build/
+.site
+
+# Tests / coverage
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+
+# PyInstaller
+dist/
+build/
+downloads/
+develop-eggs/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# SageMath
+*.sage.py
+
+# Scrapy
+.scrapy/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Local settings
+local_settings.py
+
+# Pipenv / poetry / pdm lock files (opcional ignorar)
+# Pipfile.lock
+# poetry.lock
+# pdm.lock
+
+# __pypackages__ (PEP 582)
+__pypackages__/
 
