@@ -2,7 +2,7 @@
 
 TrustLock is a **security event monitoring platform** designed to help organizations detect suspicious activity, monitor account usage, and maintain compliance — all through a simple, elegant web dashboard.
 
-<img src="/dashboard/static/dashboard/images/trustlock_logo.png" alt="Logo" width="600"/>
+<img src="/dashboard/static/dashboard/images/trustlock_logoblanco.png" alt="Logo" width="600"/>
 
 ---
 
