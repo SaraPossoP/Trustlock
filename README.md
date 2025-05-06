@@ -59,7 +59,7 @@ TrustLock is a **security event monitoring platform** designed to help organizat
 ## 💻 Local Setup
 
 ```bash
-git clone https://github.com/yourusername/trustlock.git
+git clone https://github.com/SaraPossoP/Trustlock.git
 cd trustlock
 python3 -m venv env
 source env/bin/activate
