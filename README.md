@@ -56,20 +56,6 @@ TrustLock is a **security event monitoring platform** designed to help organizat
 
 ---
 
-## 💻 Local Setup
-
-```bash
-git clone https://github.com/SaraPossoP/Trustlock.git
-cd trustlock
-python3 -m venv env
-source env/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-
----
-
 ## 🧩 Enterprise Integration
 
 TrustLock is designed with flexibility in mind, allowing businesses to integrate it in multiple ways depending on their needs:
@@ -106,3 +92,15 @@ Embed TrustLock into existing platforms or portals as a security dashboard modul
 ✅ Ideal for fintech, SaaS or corporate tools with user activity tracking.
 
 ---
+
+## 💻 Local Setup
+
+```bash
+git clone https://github.com/SaraPossoP/Trustlock.git
+cd trustlock
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
