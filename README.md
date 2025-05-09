@@ -67,3 +67,42 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
+
+---
+
+## 🧩 Enterprise Integration
+
+TrustLock is designed with flexibility in mind, allowing businesses to integrate it in multiple ways depending on their needs:
+
+### 🔧 1. Internal Monitoring Tool
+Run TrustLock as a secure, internal web dashboard for:
+
+- Tracking suspicious activity (e.g., failed logins, unusual transfers)
+- Auditing user behavior for compliance
+- Managing events via a user-friendly interface
+
+✅ Perfect for IT departments or compliance teams who want full visibility.
+
+---
+
+### 🔗 2. API Integration with Existing Systems *(optional extension)*
+Extend TrustLock to receive data from other services by adding a REST API (e.g., Django REST Framework):
+
+- Send events from external systems (auth services, backends)
+- Automate event creation via POST requests
+- Centralize logs across multiple platforms
+
+✅ Useful for companies with existing infrastructures and automation.
+
+---
+
+### 🧱 3. Modular Dashboard Component
+Embed TrustLock into existing platforms or portals as a security dashboard module:
+
+- Integrate within corporate intranets or employee dashboards
+- Visualize event metrics with charts and filters
+- Control access through Django roles (admin vs user)
+
+✅ Ideal for fintech, SaaS or corporate tools with user activity tracking.
+
+---
